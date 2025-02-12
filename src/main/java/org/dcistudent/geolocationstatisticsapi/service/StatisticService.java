@@ -6,7 +6,6 @@ import org.dcistudent.geolocationstatisticsapi.repository.AsnRepository;
 import org.dcistudent.geolocationstatisticsapi.repository.CityRepository;
 import org.springframework.stereotype.Service;
 
-import java.net.UnknownHostException;
 import java.util.List;
 
 @Service
