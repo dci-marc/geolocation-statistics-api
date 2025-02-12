@@ -1,0 +1,32 @@
+# The Query type serves as the main entry point for GraphQL queries.
+# It defines available data-fetching operations for the API.
+type Query {
+    # Retrieves a list of IP block statistics per country.
+    # Each entry represents a country and the number of IP blocks associated with it.
+    # 
+    # The return type `[IpBlocksPerCountryDto!]!` ensures:
+    # - The list is always returned (even if empty).
+    # - Each entry in the list is non-null.
+    getIpBlocksPerCountry: [IpBlocksPerCountryDto!]!
+
+    getAsByAsNumber(asNumber: Int!): [AsByAsNumberDto!]!
+}
+
+# Data Transfer Object (DTO) representing the number of IP blocks per country.
+type IpBlocksPerCountryDto {
+    # The name of the country as a string.
+    # This field is required (`String!`), meaning it can never be null.
+    country: String!
+
+    # The number of IP blocks assigned to this country.
+    # This field is required (`Int!`), meaning it can never be null.
+    # It should always be a non-negative integer (handled via validation in the resolver).
+    count: Int!
+}
+
+type AsByAsNumberDto {
+    asNumber: Int!
+    asName: String!
+    ipStart: String!
+    ipEnd: String!
+}
