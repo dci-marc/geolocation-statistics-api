@@ -9,7 +9,9 @@ type Query {
     # - Each entry in the list is non-null.
     getIpBlocksPerCountry: [IpBlocksPerCountryDto!]!
 
-    getAsByAsNumber(asNumber: Int!): [AsByAsNumberDto!]!
+    getAsByNumber(number: Int!): [AsDto!]!
+    getAsById(id: Int!): [AsDto!]!
+    getAsByName(name: String!): [AsDto!]!
 }
 
 # Data Transfer Object (DTO) representing the number of IP blocks per country.
@@ -24,7 +26,8 @@ type IpBlocksPerCountryDto {
     count: Int!
 }
 
-type AsByAsNumberDto {
+type AsDto {
+    id: ID!
     asNumber: Int!
     asName: String!
     ipStart: String!
