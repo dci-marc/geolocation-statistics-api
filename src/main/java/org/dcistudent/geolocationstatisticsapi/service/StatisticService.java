@@ -1,6 +1,6 @@
 package org.dcistudent.geolocationstatisticsapi.service;
 
-import org.dcistudent.geolocationstatisticsapi.dto.AsByAsNumberDto;
+import org.dcistudent.geolocationstatisticsapi.dto.AsDto;
 import org.dcistudent.geolocationstatisticsapi.dto.IpBlocksPerCountryDto;
 import org.dcistudent.geolocationstatisticsapi.repository.AsnRepository;
 import org.dcistudent.geolocationstatisticsapi.repository.CityRepository;
@@ -23,7 +23,16 @@ public class StatisticService {
     return cityRepository.findIpBlocksPerCountry();
   }
 
-  public List<AsByAsNumberDto> getAsByAsNumber(Long asNumber) {
-    return asnRepository.findAsByAsNumber(asNumber);
+  public List<AsDto> getAsByNumber(Long number) {
+    return asnRepository.findAsByNumber(number);
   }
+
+  public List<AsDto> getAsById(Long id) {
+    return asnRepository.findAsById(id);
+  }
+
+  public List<AsDto> getAsByName(String name) {
+    return asnRepository.findAsByName(name);
+  }
+
 }

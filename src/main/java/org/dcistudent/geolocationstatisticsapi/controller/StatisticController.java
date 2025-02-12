@@ -1,6 +1,6 @@
 package org.dcistudent.geolocationstatisticsapi.controller;
 
-import org.dcistudent.geolocationstatisticsapi.dto.AsByAsNumberDto;
+import org.dcistudent.geolocationstatisticsapi.dto.AsDto;
 import org.dcistudent.geolocationstatisticsapi.dto.IpBlocksPerCountryDto;
 import org.dcistudent.geolocationstatisticsapi.service.StatisticService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,8 +25,18 @@ public class StatisticController {
     return this.statisticService.getIpBlocksPerCountry();
   }
 
-  @GetMapping("/as/{asNumber}")
-  public List<AsByAsNumberDto> getAsByAsNumber(@PathVariable Long asNumber) {
-    return this.statisticService.getAsByAsNumber(asNumber);
+  @GetMapping("/as/by-number/{number}")
+  public List<AsDto> getAsByNumber(@PathVariable Long number) {
+    return this.statisticService.getAsByNumber(number);
+  }
+
+  @GetMapping("/as/by-id/{id}")
+  public List<AsDto> getAsById(@PathVariable Long id) {
+    return this.statisticService.getAsById(id);
+  }
+
+  @GetMapping("/as/by-name/{name}")
+  public List<AsDto> getAsByName(@PathVariable String name) {
+    return this.statisticService.getAsByName(name);
   }
 }
