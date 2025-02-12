@@ -1,9 +1,6 @@
 package org.dcistudent.geolocationstatisticsapi.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class City {
@@ -14,8 +11,8 @@ public class City {
 
   private Byte ipStart;
   private Byte ipEnd;
-  private Character continent;
-  private Character country;
+  private String continent;
+  private String country;
   private String stateProvince;
   private String name;
   private Float latitude;
@@ -26,8 +23,8 @@ public class City {
   public City(
       Byte ipStart,
       Byte ipEnd,
-      Character continent,
-      Character country,
+      String continent,
+      String country,
       String stateProvince,
       String name,
       Float latitude,
@@ -70,20 +67,20 @@ public class City {
     return this;
   }
 
-  public Character continent() {
+  public String continent() {
     return continent;
   }
 
-  public City setContinent(Character continent) {
+  public City setContinent(String continent) {
     this.continent = continent;
     return this;
   }
 
-  public Character country() {
+  public String country() {
     return country;
   }
 
-  public City setCountry(Character country) {
+  public City setCountry(String country) {
     this.country = country;
     return this;
   }

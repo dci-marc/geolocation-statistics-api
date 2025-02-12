@@ -8,14 +8,14 @@ public class Asn {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  private Byte ipStart;
-  private Byte ipEnd;
-  private String asNumber;
+  private String ipStart;
+  private String ipEnd;
+  private Long asNumber;
   private String asOrg;
 
   public Asn() {}
 
-  public Asn(Byte ipStart, Byte ipEnd, String asNumber, String asOrg) {
+  public Asn(String ipStart, String ipEnd, Long asNumber, String asOrg) {
     this.ipStart = ipStart;
     this.ipEnd = ipEnd;
     this.asNumber = asNumber;
@@ -31,29 +31,29 @@ public class Asn {
     return this;
   }
 
-  public Byte ipStart() {
+  public String ipStart() {
     return ipStart;
   }
 
-  public Asn setIpStart(Byte ipStart) {
+  public Asn setIpStart(String ipStart) {
     this.ipStart = ipStart;
     return this;
   }
 
-  public Byte ipEnd() {
+  public String ipEnd() {
     return ipEnd;
   }
 
-  public Asn setIpEnd(Byte ipEnd) {
+  public Asn setIpEnd(String ipEnd) {
     this.ipEnd = ipEnd;
     return this;
   }
 
-  public String asNumber() {
+  public Long asNumber() {
     return asNumber;
   }
 
-  public Asn setAsNumber(String asNumber) {
+  public Asn setAsNumber(Long asNumber) {
     this.asNumber = asNumber;
     return this;
   }
