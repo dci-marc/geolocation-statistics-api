@@ -1,7 +1,7 @@
 package org.dcistudent.geolocationstatisticsapi.service;
 
 import org.dcistudent.geolocationstatisticsapi.manager.AsnManager;
-import org.dcistudent.geolocationstatisticsapi.model.data.AsnDataModel;
+import org.dcistudent.geolocationstatisticsapi.model.data.asn.DataModel;
 import org.dcistudent.geolocationstatisticsapi.model.response.CountryIpBlocksResponse;
 import org.dcistudent.geolocationstatisticsapi.repository.CityRepository;
 import org.springframework.stereotype.Service;
@@ -24,15 +24,15 @@ public class StatisticService {
     return this.cityRepository.findIpBlocksPerCountry();
   }
 
-  public Map<Long, AsnDataModel> getAsByNumber(Long number) {
+  public Map<Long, DataModel> getAsByNumber(Long number) {
     return this.asnManager.findAsByNumber(number);
   }
 
-  public Map<Long, AsnDataModel> getAsById(Long id) {
+  public Map<Long, DataModel> getAsById(Long id) {
     return this.asnManager.findAsById(id);
   }
 
-  public Map<Long, AsnDataModel> getAsByName(String name) {
+  public Map<Long, DataModel> getAsByName(String name) {
     return this.asnManager.findAsByName(name);
   }
 }

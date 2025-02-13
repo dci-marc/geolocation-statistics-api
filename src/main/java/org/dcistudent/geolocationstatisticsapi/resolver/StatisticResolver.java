@@ -1,6 +1,6 @@
 package org.dcistudent.geolocationstatisticsapi.resolver;
 
-import org.dcistudent.geolocationstatisticsapi.model.data.AsnDataModel;
+import org.dcistudent.geolocationstatisticsapi.model.data.asn.DataModel;
 import org.dcistudent.geolocationstatisticsapi.model.response.CountryIpBlocksResponse;
 import org.dcistudent.geolocationstatisticsapi.model.response.Response;
 import org.dcistudent.geolocationstatisticsapi.service.StatisticService;
@@ -26,7 +26,7 @@ public class StatisticResolver {
   }
 
   @QueryMapping
-  public Response<Map<Long, AsnDataModel>> getAsByNumber(@Argument Long number) {
+  public Response<Map<Long, DataModel>> getAsByNumber(@Argument Long number) {
     try {
       return new Response<>(Response.Status.OK.get(), Response.Message.OK.get(), this.statisticService.getAsByNumber(number));
     } catch (Exception e) {
@@ -35,7 +35,7 @@ public class StatisticResolver {
   }
 
   @QueryMapping
-  public Response<Map<Long, AsnDataModel>> getAsById(@Argument Long id) {
+  public Response<Map<Long, DataModel>> getAsById(@Argument Long id) {
     try {
       return new Response<>(Response.Status.OK.get(), Response.Message.OK.get(), this.statisticService.getAsById(id));
     } catch (Exception e) {
@@ -44,7 +44,7 @@ public class StatisticResolver {
   }
 
   @QueryMapping
-  public Response<Map<Long, AsnDataModel>> getAsByName(@Argument String name) {
+  public Response<Map<Long, DataModel>> getAsByName(@Argument String name) {
     try {
       return new Response<>(Response.Status.OK.get(), Response.Message.OK.get(), this.statisticService.getAsByName(name));
     } catch (Exception e) {
