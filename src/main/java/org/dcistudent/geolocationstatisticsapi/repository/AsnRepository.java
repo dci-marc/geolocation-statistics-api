@@ -8,20 +8,17 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface AsnRepository extends JpaRepository<Asn, Long> {
-  @Query("SELECT " +
-         "a.id, a.asNumber, a.asOrg, a.ipStart, a.ipEnd " +
+  @Query("SELECT a " +
          "FROM Asn AS a " +
          "WHERE a.asNumber = :asNumber")
   List<Asn> findAsByNumber(@Param("asNumber") Long asNumber);
 
-  @Query("SELECT " +
-      "a.id, a.asNumber, a.asOrg, a.ipStart, a.ipEnd " +
+  @Query("SELECT a " +
       "FROM Asn AS a " +
       "WHERE a.id = :id")
   List<Asn> findAsById(@Param("id") Long id);
 
-  @Query("SELECT " +
-      "a.id, a.asNumber, a.asOrg, a.ipStart, a.ipEnd " +
+  @Query("SELECT a " +
       "FROM Asn AS a " +
       "WHERE a.asOrg LIKE CONCAT('%', :name, '%')")
   List<Asn> findAsByName(@Param("name") String name);
