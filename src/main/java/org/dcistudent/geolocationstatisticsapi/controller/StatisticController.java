@@ -3,7 +3,6 @@ package org.dcistudent.geolocationstatisticsapi.controller;
 import org.dcistudent.geolocationstatisticsapi.model.response.CountryIpBlocksResponse;
 import org.dcistudent.geolocationstatisticsapi.model.response.Response;
 import org.dcistudent.geolocationstatisticsapi.service.StatisticService;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

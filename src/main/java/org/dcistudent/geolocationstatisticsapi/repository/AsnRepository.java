@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface AsnRepository extends JpaRepository<Asn, Long> {
   @Query("SELECT a " +
-         "FROM Asn AS a " +
-         "WHERE a.asNumber = :asNumber")
+      "FROM Asn AS a " +
+      "WHERE a.asNumber = :asNumber")
   List<Asn> findAsByNumber(@Param("asNumber") Long asNumber);
 
   @Query("SELECT a " +
