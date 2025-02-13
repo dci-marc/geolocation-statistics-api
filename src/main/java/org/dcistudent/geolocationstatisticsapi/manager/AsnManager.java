@@ -21,17 +21,17 @@ public class AsnManager {
     this.mapper = mapper;
   }
 
-  public Map<Long, AsnDataModel> getAsByNumber(Long asNumber) {
+  public Map<Long, AsnDataModel> findAsByNumber(Long asNumber) {
     List<Asn> list = asnRepository.findAsByNumber(asNumber);
     return this.convertToDataModel(list);
   }
 
-  public Map<Long, AsnDataModel> getAsById(Long id) {
+  public Map<Long, AsnDataModel> findAsById(Long id) {
     List<Asn> list = asnRepository.findAsById(id);
     return this.convertToDataModel(list);
   }
 
-  public Map<Long, AsnDataModel> getAsByName(String name) {
+  public Map<Long, AsnDataModel> findAsByName(String name) {
     List<Asn> list = asnRepository.findAsByName(name);
     return this.convertToDataModel(list);
   }
