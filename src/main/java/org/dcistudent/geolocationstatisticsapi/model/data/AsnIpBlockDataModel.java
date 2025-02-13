@@ -1,28 +1,30 @@
 package org.dcistudent.geolocationstatisticsapi.model.data;
 
-public class AsnIpBlocksDataModel {
+import java.io.Serializable;
+
+public class AsnIpBlockDataModel implements Serializable {
   private String ipStart;
   private String ipEnd;
 
-  public AsnIpBlocksDataModel(String ipStart, String ipEnd) {
+  public AsnIpBlockDataModel(String ipStart, String ipEnd) {
     this.ipStart = ipStart;
     this.ipEnd = ipEnd;
   }
 
-  public String ipStart() {
+  public String getIpStart() {
     return this.ipStart;
   }
 
-  public AsnIpBlocksDataModel setIpStart(String ipStart) {
+  public AsnIpBlockDataModel setIpStart(String ipStart) {
     this.ipStart = ipStart;
     return this;
   }
 
-  public String ipEnd() {
+  public String getIpEnd() {
     return this.ipEnd;
   }
 
-  public AsnIpBlocksDataModel setIpEnd(String ipEnd) {
+  public AsnIpBlockDataModel setIpEnd(String ipEnd) {
     this.ipEnd = ipEnd;
     return this;
   }

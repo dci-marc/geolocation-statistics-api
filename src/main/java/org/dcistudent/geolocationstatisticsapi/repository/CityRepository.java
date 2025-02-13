@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface CityRepository extends JpaRepository<City, Long> {
   @Query("SELECT NEW " +
-         "org.dcistudent.geolocationstatisticsapi.response.IpBlocksPerCountryDto(" +
+         "org.dcistudent.geolocationstatisticsapi.model.response.CountryIpBlocksResponse(" +
          "c.country, COUNT(c) " +
          ") " +
          "FROM City AS c " +
