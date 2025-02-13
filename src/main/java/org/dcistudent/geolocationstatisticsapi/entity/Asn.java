@@ -8,9 +8,13 @@ public class Asn {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @Column(name = "ip_start")
   private String ipStart;
+  @Column(name = "ip_end")
   private String ipEnd;
+  @Column(name = "as_number")
   private Long asNumber;
+  @Column(name = "as_org")
   private String asOrg;
 
   public Asn() {}
@@ -22,8 +26,8 @@ public class Asn {
     this.asOrg = asOrg;
   }
 
-  public Long id() {
-    return id;
+  public Long getId() {
+    return this.id;
   }
 
   public Asn setId(Long id) {
@@ -31,8 +35,8 @@ public class Asn {
     return this;
   }
 
-  public String ipStart() {
-    return ipStart;
+  public String getIpStart() {
+    return this.ipStart;
   }
 
   public Asn setIpStart(String ipStart) {
@@ -40,8 +44,8 @@ public class Asn {
     return this;
   }
 
-  public String ipEnd() {
-    return ipEnd;
+  public String getIpEnd() {
+    return this.ipEnd;
   }
 
   public Asn setIpEnd(String ipEnd) {
@@ -49,8 +53,8 @@ public class Asn {
     return this;
   }
 
-  public Long asNumber() {
-    return asNumber;
+  public Long getAsNumber() {
+    return this.asNumber;
   }
 
   public Asn setAsNumber(Long asNumber) {
@@ -58,23 +62,12 @@ public class Asn {
     return this;
   }
 
-  public String asOrg() {
-    return asOrg;
+  public String getAsOrg() {
+    return this.asOrg;
   }
 
   public Asn setAsOrg(String asOrg) {
     this.asOrg = asOrg;
     return this;
-  }
-
-  @Override
-  public String toString() {
-    return "Asn{" +
-      "id=" + this.id +
-      ", ipStart=" + this.ipStart +
-      ", ipEnd=" + this.ipEnd +
-      ", asNumber='" + this.asNumber + '\'' +
-      ", asOrg='" + this.asOrg + '\'' +
-      '}';
   }
 }

@@ -1,9 +1,6 @@
 package org.dcistudent.geolocationstatisticsapi.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Country {
@@ -12,8 +9,11 @@ public class Country {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @Column(name = "ip_start")
   private Byte ipStart;
+  @Column(name = "ip_end")
   private Byte ipEnd;
+  @Column(name = "name")
   private Character name;
 
   public Country() {}

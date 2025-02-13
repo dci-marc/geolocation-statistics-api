@@ -9,13 +9,21 @@ public class City {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @Column(name = "ip_start")
   private Byte ipStart;
+  @Column(name = "ip_end")
   private Byte ipEnd;
+  @Column(name = "continent")
   private String continent;
+  @Column(name = "country")
   private String country;
+  @Column(name = "state_province")
   private String stateProvince;
+  @Column(name = "name")
   private String name;
+  @Column(name = "latitude")
   private Float latitude;
+  @Column(name = "longitude")
   private Float longitude;
 
   public City() {}
