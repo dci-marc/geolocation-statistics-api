@@ -1,8 +1,9 @@
 package org.dcistudent.geolocationstatisticsapi.controller;
 
-import org.dcistudent.geolocationstatisticsapi.dto.AsDto;
-import org.dcistudent.geolocationstatisticsapi.dto.IpBlocksPerCountryDto;
+import org.dcistudent.geolocationstatisticsapi.model.response.CountryIpBlocksResponse;
+import org.dcistudent.geolocationstatisticsapi.model.response.Response;
 import org.dcistudent.geolocationstatisticsapi.service.StatisticService;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,22 +22,34 @@ public class StatisticController {
   }
 
   @GetMapping("/ip-blocks-per-country")
-  public List<IpBlocksPerCountryDto> getIpBlocksPerCountry() {
+  public List<CountryIpBlocksResponse> getIpBlocksPerCountry() {
     return this.statisticService.getIpBlocksPerCountry();
   }
 
   @GetMapping("/as/by-number/{number}")
-  public List<AsDto> getAsByNumber(@PathVariable Long number) {
-    return this.statisticService.getAsByNumber(number);
+  public Response getAsByNumber(@PathVariable Long number) {
+    try {
+      return new Response(Response.Status.OK.get(), Response.Message.OK.get(), this.statisticService.getAsByNumber(number));
+    } catch (Exception e) {
+      return new Response(Response.Status.INTERNAL_SERVER_ERROR.get(), Response.Message.INTERNAL_SERVER_ERROR.get());
+    }
   }
 
   @GetMapping("/as/by-id/{id}")
-  public List<AsDto> getAsById(@PathVariable Long id) {
-    return this.statisticService.getAsById(id);
+  public Response getAsById(@PathVariable Long id) {
+    try {
+      return new Response(Response.Status.OK.get(), Response.Message.OK.get(), this.statisticService.getAsById(id));
+    } catch (Exception e) {
+      return new Response(Response.Status.INTERNAL_SERVER_ERROR.get(), Response.Message.INTERNAL_SERVER_ERROR.get());
+    }
   }
 
   @GetMapping("/as/by-name/{name}")
-  public List<AsDto> getAsByName(@PathVariable String name) {
-    return this.statisticService.getAsByName(name);
+  public Response getAsByName(@PathVariable String name) {
+    try {
+      return new Response(Response.Status.OK.get(), Response.Message.OK.get(), this.statisticService.getAsByName(name));
+    } catch (Exception e) {
+      return new Response(Response.Status.INTERNAL_SERVER_ERROR.get(), Response.Message.INTERNAL_SERVER_ERROR.get());
+    }
   }
 }

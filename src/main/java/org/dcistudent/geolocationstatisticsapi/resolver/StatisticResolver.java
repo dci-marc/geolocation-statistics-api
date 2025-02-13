@@ -1,7 +1,7 @@
 package org.dcistudent.geolocationstatisticsapi.resolver;
 
-import org.dcistudent.geolocationstatisticsapi.dto.AsDto;
-import org.dcistudent.geolocationstatisticsapi.dto.IpBlocksPerCountryDto;
+import org.dcistudent.geolocationstatisticsapi.model.response.CountryIpBlocksResponse;
+import org.dcistudent.geolocationstatisticsapi.model.response.Response;
 import org.dcistudent.geolocationstatisticsapi.service.StatisticService;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
@@ -19,22 +19,34 @@ public class StatisticResolver {
   }
 
   @QueryMapping
-  public List<IpBlocksPerCountryDto> getIpBlocksPerCountry() {
+  public List<CountryIpBlocksResponse> getIpBlocksPerCountry() {
     return this.statisticService.getIpBlocksPerCountry();
   }
 
   @QueryMapping
-  public List<AsDto> getAsByNumber(@Argument Long number) {
-    return this.statisticService.getAsByNumber(number);
+  public Response getAsByNumber(@Argument Long number) {
+    try {
+      return new Response(Response.Status.OK.get(), Response.Message.OK.get(), this.statisticService.getAsByNumber(number));
+    } catch (Exception e) {
+      return new Response(Response.Status.INTERNAL_SERVER_ERROR.get(), Response.Message.INTERNAL_SERVER_ERROR.get());
+    }
   }
 
   @QueryMapping
-  public List<AsDto> getAsById(@Argument Long id) {
-    return this.statisticService.getAsById(id);
+  public Response getAsById(@Argument Long id) {
+    try {
+      return new Response(Response.Status.OK.get(), Response.Message.OK.get(), this.statisticService.getAsById(id));
+    } catch (Exception e) {
+      return new Response(Response.Status.INTERNAL_SERVER_ERROR.get(), Response.Message.INTERNAL_SERVER_ERROR.get());
+    }
   }
 
   @QueryMapping
-  public List<AsDto> getAsByName(@Argument String name) {
-    return this.statisticService.getAsByName(name);
+  public Response getAsByName(@Argument String name) {
+    try {
+      return new Response(Response.Status.OK.get(), Response.Message.OK.get(), this.statisticService.getAsByName(name));
+    } catch (Exception e) {
+      return new Response(Response.Status.INTERNAL_SERVER_ERROR.get(), Response.Message.INTERNAL_SERVER_ERROR.get());
+    }
   }
 }
