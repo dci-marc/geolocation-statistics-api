@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,16 +19,21 @@ public interface LogRepository extends JpaRepository<Log, Long> {
     return findWithLimitStatement(limit);
   }
 
-  @Query("SELECT l " +
+  @Query(
+      "SELECT l " +
       "FROM Log AS l " +
       "ORDER BY datetime DESC " +
-      "LIMIT :limit")
+      "LIMIT :limit"
+  )
   List<Log> findWithLimitStatement(@Param("limit") Integer limit);
 
   @Modifying
-  @Query("INSERT INTO Log (level, datetime, message) " +
-      "VALUES (:level, :datetime, :message)")
+  @Query(
+      "INSERT INTO Log (id, level, datetime, message) " +
+      "VALUES (:id, :level, :datetime, :message)"
+  )
   void insert(
+      @Param("id") String uuid,
       @Param("level") Integer level,
       @Param("datetime") String datetime,
       @Param("message") String message
