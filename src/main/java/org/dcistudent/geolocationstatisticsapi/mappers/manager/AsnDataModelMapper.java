@@ -1,8 +1,8 @@
-package org.dcistudent.geolocationstatisticsapi.mapper.manager;
+package org.dcistudent.geolocationstatisticsapi.mappers.manager;
 
-import org.dcistudent.geolocationstatisticsapi.entity.Asn;
-import org.dcistudent.geolocationstatisticsapi.model.data.asn.DataModel;
-import org.dcistudent.geolocationstatisticsapi.model.data.asn.IpBlockDataModel;
+import org.dcistudent.geolocationstatisticsapi.entities.Asn;
+import org.dcistudent.geolocationstatisticsapi.models.data.asn.DataModel;
+import org.dcistudent.geolocationstatisticsapi.models.data.asn.IpBlockDataModel;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

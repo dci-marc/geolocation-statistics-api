@@ -1,11 +1,12 @@
-package org.dcistudent.geolocationstatisticsapi.model.response;
+package org.dcistudent.geolocationstatisticsapi.models.response;
 
 public class Response<T> {
   int status = 0;
   String message = "";
   T data;
-  public Response() {
-  }
+
+  public Response() {}
+
   public Response(Integer status, String message) {
     this.status = status;
     this.message = message;
