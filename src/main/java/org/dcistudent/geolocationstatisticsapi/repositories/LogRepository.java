@@ -13,8 +13,8 @@ public interface LogRepository extends JpaRepository<Log, Long> {
 
   default List<Log> findWithLimit(Integer limit) {
     limit = Optional.ofNullable(limit).orElse(10);
-    if (limit <= 0 || limit > 100) {
-      limit = 10;
+    if (limit < 1 || limit > 100) {
+      throw new IllegalArgumentException("Limit must be between 1 and 100");
     }
     return findWithLimitStatement(limit);
   }
