@@ -34,3 +34,4 @@ build/
 
 ### Custom ###
 *.sqlite3
+src/main/resources/graphql/schema.graphqls

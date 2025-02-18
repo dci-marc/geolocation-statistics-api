@@ -1,15 +1,15 @@
-package org.dcistudent.geolocationstatisticsapi.models.data.asn;
+package org.dcistudent.geolocationstatisticsapi.models.data;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DataModel implements Serializable {
+public class AsnDataModel implements Serializable {
   private Long asNumber;
   private String asOrg;
   private List<IpBlockDataModel> ipBlocks = new ArrayList<>();
 
-  public DataModel(Long asNumber, String asOrg) {
+  public AsnDataModel(Long asNumber, String asOrg) {
     this.setAsNumber(asNumber);
     this.setAsOrg(asOrg);
   }
@@ -18,7 +18,7 @@ public class DataModel implements Serializable {
     return this.asNumber;
   }
 
-  public DataModel setAsNumber(Long asNumber) {
+  public AsnDataModel setAsNumber(Long asNumber) {
     this.asNumber = asNumber;
     return this;
   }
@@ -27,7 +27,7 @@ public class DataModel implements Serializable {
     return this.asOrg;
   }
 
-  public DataModel setAsOrg(String asOrg) {
+  public AsnDataModel setAsOrg(String asOrg) {
     this.asOrg = asOrg;
     return this;
   }
@@ -36,7 +36,7 @@ public class DataModel implements Serializable {
     return this.ipBlocks;
   }
 
-  public DataModel setIpBlocks(List<IpBlockDataModel> ipBlocks) {
+  public AsnDataModel setIpBlocks(List<IpBlockDataModel> ipBlocks) {
     this.ipBlocks = ipBlocks;
     return this;
   }

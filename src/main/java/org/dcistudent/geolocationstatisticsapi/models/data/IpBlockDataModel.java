@@ -1,4 +1,4 @@
-package org.dcistudent.geolocationstatisticsapi.models.data.asn;
+package org.dcistudent.geolocationstatisticsapi.models.data;
 
 import java.io.Serializable;
 

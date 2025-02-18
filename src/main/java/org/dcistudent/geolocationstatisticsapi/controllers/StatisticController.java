@@ -1,6 +1,8 @@
 package org.dcistudent.geolocationstatisticsapi.controllers;
 
-import org.dcistudent.geolocationstatisticsapi.models.data.asn.DataModel;
+import org.dcistudent.geolocationstatisticsapi.factories.model.SerializerResponseFactory;
+import org.dcistudent.geolocationstatisticsapi.models.data.AsnDataModel;
+import org.dcistudent.geolocationstatisticsapi.models.response.AsnResponse;
 import org.dcistudent.geolocationstatisticsapi.models.response.CountryIpBlocksResponse;
 import org.dcistudent.geolocationstatisticsapi.models.response.Response;
 import org.dcistudent.geolocationstatisticsapi.services.StatisticService;
@@ -28,27 +30,37 @@ public class StatisticController {
   }
 
   @GetMapping("/as/by-number/{number}")
-  public Response<Map<Long, DataModel>> getAsByNumber(@PathVariable Long number) {
+  public Response<Map<Long, AsnResponse>> getAsByNumber(@PathVariable Long number) {
     try {
-      return new Response<>(Response.Status.OK.get(), Response.Message.OK.get(), this.statisticService.getAsByNumber(number));
+      return new Response<>(
+          Response.Status.OK.get(),
+          Response.Message.OK.get(),
+          SerializerResponseFactory.serializeAsnResponse(this.statisticService.getAsByNumber(number))
+      );
     } catch (Exception e) {
       return new Response<>(Response.Status.INTERNAL_SERVER_ERROR.get(), Response.Message.INTERNAL_SERVER_ERROR.get());
     }
   }
 
   @GetMapping("/as/by-id/{id}")
-  public Response<Map<Long, DataModel>> getAsById(@PathVariable Long id) {
+  public Response<Map<Long, AsnResponse>> getAsById(@PathVariable Long id) {
     try {
-      return new Response<>(Response.Status.OK.get(), Response.Message.OK.get(), this.statisticService.getAsById(id));
+      return new Response<>(
+          Response.Status.OK.get(),
+          Response.Message.OK.get(),
+          SerializerResponseFactory.serializeAsnResponse(this.statisticService.getAsById(id)));
     } catch (Exception e) {
       return new Response<>(Response.Status.INTERNAL_SERVER_ERROR.get(), Response.Message.INTERNAL_SERVER_ERROR.get());
     }
   }
 
   @GetMapping("/as/by-name/{name}")
-  public Response<Map<Long, DataModel>> getAsByName(@PathVariable String name) {
+  public Response<Map<Long, AsnResponse>> getAsByName(@PathVariable String name) {
     try {
-      return new Response<>(Response.Status.OK.get(), Response.Message.OK.get(), this.statisticService.getAsByName(name));
+      return new Response<>(
+          Response.Status.OK.get(),
+          Response.Message.OK.get(),
+          SerializerResponseFactory.serializeAsnResponse(this.statisticService.getAsByName(name)));
     } catch (Exception e) {
       return new Response<>(Response.Status.INTERNAL_SERVER_ERROR.get(), Response.Message.INTERNAL_SERVER_ERROR.get());
     }
