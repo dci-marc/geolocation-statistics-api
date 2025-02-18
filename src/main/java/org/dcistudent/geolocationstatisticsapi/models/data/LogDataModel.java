@@ -1,24 +1,21 @@
-package org.dcistudent.geolocationstatisticsapi.entities;
+package org.dcistudent.geolocationstatisticsapi.models.data;
 
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.time.ZonedDateTime;
 
-@Entity
-public class Log {
-  @Id
-  @GeneratedValue(strategy = GenerationType.UUID)
+public class LogDataModel {
+
+  @JsonIgnore
   private String id;
-  @Column(name = "level")
   private Integer level;
-  @Column(name = "datetime")
-  private String datetime;
-  @Column(name = "message")
+  private ZonedDateTime datetime;
   private String message;
 
-  public Log() {}
+  public LogDataModel() {}
 
-  public Log(Integer level, String datetime, String message) {
+  public LogDataModel(String id, Integer level, ZonedDateTime datetime, String message) {
+    this.setId(id);
     this.setLevel(level);
     this.setDatetime(datetime);
     this.setMessage(message);
@@ -40,11 +37,11 @@ public class Log {
     this.level = level;
   }
 
-  public String getDatetime() {
+  public ZonedDateTime getDatetime() {
     return this.datetime;
   }
 
-  public void setDatetime(String datetime) {
+  public void setDatetime(ZonedDateTime datetime) {
     this.datetime = datetime;
   }
 

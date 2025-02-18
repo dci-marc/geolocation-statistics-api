@@ -4,6 +4,7 @@ import org.dcistudent.geolocationstatisticsapi.factories.model.SerializerRespons
 import org.dcistudent.geolocationstatisticsapi.loggers.SqliteLogger;
 import org.dcistudent.geolocationstatisticsapi.models.response.AsnResponse;
 import org.dcistudent.geolocationstatisticsapi.models.response.CountryIpBlocksResponse;
+import org.dcistudent.geolocationstatisticsapi.models.response.LogResponse;
 import org.dcistudent.geolocationstatisticsapi.models.response.Response;
 import org.dcistudent.geolocationstatisticsapi.services.StatisticService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,7 +34,7 @@ public class StatisticController {
   }
 
   @GetMapping("/as/by-number/{number}")
-  public Response<Map<Long, AsnResponse>> getAsByNumber(@PathVariable Long number) {
+  public Response getAsByNumber(@PathVariable Long number) {
     try {
       Map<Long, AsnResponse> response = SerializerResponseFactory
           .serializeAsnResponse(this.statisticService.getAsByNumber(number));
@@ -46,16 +47,16 @@ public class StatisticController {
           )
       );
 
-      return new Response<>(Response.Status.OK.get(), Response.Message.OK.get(), response
+      return new Response(Response.Status.OK.get(), Response.Message.OK.get(), response
       );
     } catch (Exception e) {
       this.sqliteLogger.logFatal(Arrays.toString(e.getStackTrace()));
-      return new Response<>(Response.Status.INTERNAL_SERVER_ERROR.get(), Response.Message.INTERNAL_SERVER_ERROR.get());
+      return new Response(Response.Status.INTERNAL_SERVER_ERROR.get(), Response.Message.INTERNAL_SERVER_ERROR.get());
     }
   }
 
   @GetMapping("/as/by-id/{id}")
-  public Response<Map<Long, AsnResponse>> getAsById(@PathVariable Long id) {
+  public Response getAsById(@PathVariable Long id) {
     try {
       Map<Long, AsnResponse> response = SerializerResponseFactory
           .serializeAsnResponse(this.statisticService.getAsById(id));
@@ -68,15 +69,15 @@ public class StatisticController {
           )
       );
 
-      return new Response<>(Response.Status.OK.get(), Response.Message.OK.get(), response);
+      return new Response(Response.Status.OK.get(), Response.Message.OK.get(), response);
     } catch (Exception e) {
       this.sqliteLogger.logFatal(Arrays.toString(e.getStackTrace()));
-      return new Response<>(Response.Status.INTERNAL_SERVER_ERROR.get(), Response.Message.INTERNAL_SERVER_ERROR.get());
+      return new Response(Response.Status.INTERNAL_SERVER_ERROR.get(), Response.Message.INTERNAL_SERVER_ERROR.get());
     }
   }
 
   @GetMapping("/as/by-name/{name}")
-  public Response<Map<Long, AsnResponse>> getAsByName(@PathVariable String name) {
+  public Response getAsByName(@PathVariable String name) {
     try {
       Map<Long, AsnResponse> response = SerializerResponseFactory
           .serializeAsnResponse(this.statisticService.getAsByName(name));
@@ -89,10 +90,33 @@ public class StatisticController {
           )
       );
 
-      return new Response<>(Response.Status.OK.get(), Response.Message.OK.get(), response);
+      return new Response(Response.Status.OK.get(), Response.Message.OK.get(), response);
     } catch (Exception e) {
       this.sqliteLogger.logFatal(Arrays.toString(e.getStackTrace()));
-      return new Response<>(Response.Status.INTERNAL_SERVER_ERROR.get(), Response.Message.INTERNAL_SERVER_ERROR.get());
+      return new Response(Response.Status.INTERNAL_SERVER_ERROR.get(), Response.Message.INTERNAL_SERVER_ERROR.get());
     }
+  }
+
+  @GetMapping("/logs/{limit}")
+  public Response getLogs(@PathVariable Integer limit) {
+//    try {
+      List<LogResponse> response = SerializerResponseFactory
+          .serializeLogResponse(this.statisticService.getLogsWithLimit(limit));
+      this.sqliteLogger.logInfo(
+          String.format(
+              "%s getLogs: Count: %d",
+              StatisticController.class.getName(),
+              response.size()
+          )
+      );
+
+      return new Response(Response.Status.OK.get(), Response.Message.OK.get(), response);
+//    } catch (IllegalArgumentException e) {
+//      this.sqliteLogger.logInfo(Arrays.toString(e.getStackTrace()));
+//      return new Response(Response.Status.BAD_REQUEST.get(), Response.Message.BAD_REQUEST.get());
+//    } catch (Exception e) {
+//      this.sqliteLogger.logFatal(Arrays.toString(e.getStackTrace()));
+//      return new Response(Response.Status.INTERNAL_SERVER_ERROR.get(), Response.Message.INTERNAL_SERVER_ERROR.get());
+//    }
   }
 }

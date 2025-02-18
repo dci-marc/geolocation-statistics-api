@@ -1,35 +1,17 @@
-package org.dcistudent.geolocationstatisticsapi.entities;
+package org.dcistudent.geolocationstatisticsapi.models.response;
 
-import jakarta.persistence.*;
+public class LogResponse {
 
-import java.time.ZonedDateTime;
-
-@Entity
-public class Log {
-  @Id
-  @GeneratedValue(strategy = GenerationType.UUID)
-  private String id;
-  @Column(name = "level")
   private Integer level;
-  @Column(name = "datetime")
   private String datetime;
-  @Column(name = "message")
   private String message;
 
-  public Log() {}
+  public LogResponse() {}
 
-  public Log(Integer level, String datetime, String message) {
+  public LogResponse(Integer level, String datetime, String message) {
     this.setLevel(level);
     this.setDatetime(datetime);
     this.setMessage(message);
-  }
-
-  public String getId() {
-    return this.id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
   }
 
   public Integer getLevel() {

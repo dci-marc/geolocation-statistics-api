@@ -1,36 +1,36 @@
 package org.dcistudent.geolocationstatisticsapi.loggers;
 
-import org.dcistudent.geolocationstatisticsapi.services.LogService;
+import org.dcistudent.geolocationstatisticsapi.managers.LogManager;
 import org.springframework.stereotype.Component;
 
 @Component
 public class SqliteLogger {
 
-  private final LogService logService;
+  private final LogManager logManager;
 
-  public SqliteLogger(LogService logService) {
-    this.logService = logService;
+  public SqliteLogger(LogManager logManager) {
+    this.logManager = logManager;
   }
 
   public void logDebug(String message) {
-    this.logService.log(Level.DEBUG.get(), message);
+    this.logManager.log(Level.DEBUG.get(), message);
   }
 
   public void logInfo(String message) {
-    this.logService.log(Level.INFO.get(), message);
+    this.logManager.log(Level.INFO.get(), message);
   }
 
   public void logWarn(String message) {
-    this.logService.log(Level.WARN.get(), message);
+    this.logManager.log(Level.WARN.get(), message);
   }
 
   public void logError(String message) {
-    this.logService.log(Level.ERROR.get(), message);
+    this.logManager.log(Level.ERROR.get(), message);
   }
 
 
   public void logFatal(String message) {
-    this.logService.log(Level.FATAL.get(), message);
+    this.logManager.log(Level.FATAL.get(), message);
   }
 
   public enum Level {
