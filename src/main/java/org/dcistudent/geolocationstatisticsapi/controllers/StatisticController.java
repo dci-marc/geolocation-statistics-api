@@ -99,7 +99,7 @@ public class StatisticController {
 
   @GetMapping("/logs/{limit}")
   public Response getLogs(@PathVariable Integer limit) {
-//    try {
+    try {
       List<LogResponse> response = SerializerResponseFactory
           .serializeLogResponse(this.statisticService.getLogsWithLimit(limit));
       this.sqliteLogger.logInfo(
@@ -111,12 +111,12 @@ public class StatisticController {
       );
 
       return new Response(Response.Status.OK.get(), Response.Message.OK.get(), response);
-//    } catch (IllegalArgumentException e) {
-//      this.sqliteLogger.logInfo(Arrays.toString(e.getStackTrace()));
-//      return new Response(Response.Status.BAD_REQUEST.get(), Response.Message.BAD_REQUEST.get());
-//    } catch (Exception e) {
-//      this.sqliteLogger.logFatal(Arrays.toString(e.getStackTrace()));
-//      return new Response(Response.Status.INTERNAL_SERVER_ERROR.get(), Response.Message.INTERNAL_SERVER_ERROR.get());
-//    }
+    } catch (IllegalArgumentException e) {
+      this.sqliteLogger.logInfo(Arrays.toString(e.getStackTrace()));
+      return new Response(Response.Status.BAD_REQUEST.get(), Response.Message.BAD_REQUEST.get());
+    } catch (Exception e) {
+      this.sqliteLogger.logFatal(Arrays.toString(e.getStackTrace()));
+      return new Response(Response.Status.INTERNAL_SERVER_ERROR.get(), Response.Message.INTERNAL_SERVER_ERROR.get());
+    }
   }
 }
