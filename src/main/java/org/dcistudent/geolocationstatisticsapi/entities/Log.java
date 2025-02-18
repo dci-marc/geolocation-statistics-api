@@ -12,13 +12,13 @@ public class Log {
   @Column(name = "level")
   private Integer level;
   @Column(name = "datetime")
-  private ZonedDateTime datetime;
+  private String datetime;
   @Column(name = "message")
   private String message;
 
   public Log() {}
 
-  public Log(Integer level, ZonedDateTime datetime, String message) {
+  public Log(Integer level, String datetime, String message) {
     this.setLevel(level);
     this.setDatetime(datetime);
     this.setMessage(message);
@@ -40,11 +40,11 @@ public class Log {
     this.level = level;
   }
 
-  public ZonedDateTime getDatetime() {
+  public String getDatetime() {
     return this.datetime;
   }
 
-  public void setDatetime(ZonedDateTime datetime) {
+  public void setDatetime(String datetime) {
     this.datetime = datetime;
   }
 
