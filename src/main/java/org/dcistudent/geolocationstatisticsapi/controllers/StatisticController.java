@@ -1,9 +1,9 @@
-package org.dcistudent.geolocationstatisticsapi.controller;
+package org.dcistudent.geolocationstatisticsapi.controllers;
 
-import org.dcistudent.geolocationstatisticsapi.model.data.asn.DataModel;
-import org.dcistudent.geolocationstatisticsapi.model.response.CountryIpBlocksResponse;
-import org.dcistudent.geolocationstatisticsapi.model.response.Response;
-import org.dcistudent.geolocationstatisticsapi.service.StatisticService;
+import org.dcistudent.geolocationstatisticsapi.models.data.asn.DataModel;
+import org.dcistudent.geolocationstatisticsapi.models.response.CountryIpBlocksResponse;
+import org.dcistudent.geolocationstatisticsapi.models.response.Response;
+import org.dcistudent.geolocationstatisticsapi.services.StatisticService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

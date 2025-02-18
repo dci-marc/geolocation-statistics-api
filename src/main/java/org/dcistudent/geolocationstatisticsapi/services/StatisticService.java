@@ -1,9 +1,9 @@
-package org.dcistudent.geolocationstatisticsapi.service;
+package org.dcistudent.geolocationstatisticsapi.services;
 
-import org.dcistudent.geolocationstatisticsapi.manager.AsnManager;
-import org.dcistudent.geolocationstatisticsapi.model.data.asn.DataModel;
-import org.dcistudent.geolocationstatisticsapi.model.response.CountryIpBlocksResponse;
-import org.dcistudent.geolocationstatisticsapi.repository.CityRepository;
+import org.dcistudent.geolocationstatisticsapi.managers.AsnManager;
+import org.dcistudent.geolocationstatisticsapi.models.data.asn.DataModel;
+import org.dcistudent.geolocationstatisticsapi.models.response.CountryIpBlocksResponse;
+import org.dcistudent.geolocationstatisticsapi.repositories.CityRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package org.dcistudent.geolocationstatisticsapi.entity;
+package org.dcistudent.geolocationstatisticsapi.entities;
 
 import jakarta.persistence.*;
 

@@ -1,9 +1,9 @@
-package org.dcistudent.geolocationstatisticsapi.manager;
+package org.dcistudent.geolocationstatisticsapi.managers;
 
-import org.dcistudent.geolocationstatisticsapi.entity.Asn;
-import org.dcistudent.geolocationstatisticsapi.mapper.manager.AsnDataModelMapper;
-import org.dcistudent.geolocationstatisticsapi.model.data.asn.DataModel;
-import org.dcistudent.geolocationstatisticsapi.repository.AsnRepository;
+import org.dcistudent.geolocationstatisticsapi.entities.Asn;
+import org.dcistudent.geolocationstatisticsapi.mappers.manager.AsnDataModelMapper;
+import org.dcistudent.geolocationstatisticsapi.models.data.asn.DataModel;
+import org.dcistudent.geolocationstatisticsapi.repositories.AsnRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
