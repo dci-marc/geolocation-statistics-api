@@ -1,47 +1,36 @@
 package org.dcistudent.geolocationstatisticsapi.loggers;
 
-import org.dcistudent.geolocationstatisticsapi.repositories.LogRepository;
-import org.springframework.stereotype.Service;
+import org.dcistudent.geolocationstatisticsapi.services.LogService;
+import org.springframework.stereotype.Component;
 
-import java.time.ZonedDateTime;
+@Component
+public class SqliteLogger {
 
-@Service
-public final class SqliteLogger {
+  private final LogService logService;
 
-  private final LogRepository logRepository;
-
-  public SqliteLogger(LogRepository logRepository) {
-    this.logRepository = logRepository;
+  public SqliteLogger(LogService logService) {
+    this.logService = logService;
   }
 
   public void logDebug(String message) {
-    this.log(Level.DEBUG.get(), message);
+    this.logService.log(Level.DEBUG.get(), message);
   }
 
   public void logInfo(String message) {
-    this.log(Level.INFO.get(), message);
+    this.logService.log(Level.INFO.get(), message);
   }
 
   public void logWarn(String message) {
-    this.log(Level.WARN.get(), message);
+    this.logService.log(Level.WARN.get(), message);
   }
 
   public void logError(String message) {
-    this.log(Level.ERROR.get(), message);
+    this.logService.log(Level.ERROR.get(), message);
   }
 
 
   public void logFatal(String message) {
-    this.log(Level.FATAL.get(), message);
-  }
-
-  private void log(Integer level, String message) {
-    this.logRepository.insert(
-        level,
-        ZonedDateTime.now().toString(),
-        message
-    );
-
+    this.logService.log(Level.FATAL.get(), message);
   }
 
   public enum Level {
