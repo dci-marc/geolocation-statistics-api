@@ -8,7 +8,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -28,26 +27,24 @@ class AsnManagerTest {
 
   @BeforeEach
   void setup() {
-    AsnDataModel model = createTestData();
-    when(asnManager.findAsByNumber(12345L)).thenReturn(Map.of(12345L, model));
-    when(asnManager.findAsById(1L)).thenReturn(Map.of(12345L, model));
-    when(asnManager.findAsByName("Example Org 1")).thenReturn(Map.of(12345L, model));
+    AsnDataModel model = AsnManagerTest.createTestData();
+    when(this.asnManager.findAsByNumber(12345L)).thenReturn(Map.of(12345L, model));
+    when(this.asnManager.findAsById(1L)).thenReturn(Map.of(12345L, model));
+    when(this.asnManager.findAsByName("Example Org 1")).thenReturn(Map.of(12345L, model));
   }
 
   @Test
   void testFindAs() {
     Map<Integer, Map<Long, AsnDataModel>> results = new HashMap<>();
+    AsnDataModel model = AsnManagerTest.createTestData();
 
-    AsnDataModel model = new AsnDataModel(12345L, "Example Org 1");
-    model.getIpBlocks().add(new IpBlockDataModel("1.1.1.0", "1.1.1.255"));
+    when(this.asnManager.findAsByNumber(12345L)).thenReturn(Map.of(12345L, model));
+    when(this.asnManager.findAsById(1L)).thenReturn(Map.of(12345L, model));
+    when(this.asnManager.findAsByName("Example Org 1")).thenReturn(Map.of(12345L, model));
 
-    when(asnManager.findAsByNumber(12345L)).thenReturn(Map.of(12345L, model));
-    when(asnManager.findAsById(1L)).thenReturn(Map.of(12345L, model));
-    when(asnManager.findAsByName("Example Org 1")).thenReturn(Map.of(12345L, model));
-
-    results.put(1, asnManager.findAsByNumber(12345L));
-    results.put(2, asnManager.findAsById(1L));
-    results.put(3, asnManager.findAsByName("Example Org 1"));
+    results.put(1, this.asnManager.findAsByNumber(12345L));
+    results.put(2, this.asnManager.findAsById(1L));
+    results.put(3, this.asnManager.findAsByName("Example Org 1"));
 
     results.forEach((key, result) -> {
       assertThat(result).hasSize(1);
@@ -58,8 +55,8 @@ class AsnManagerTest {
       assertThat(result.get(12345L).getIpBlocks().get(0).getIpEnd()).isEqualTo("1.1.1.255");
     });
 
-    verify(asnManager, times(1)).findAsByNumber(12345L);
-    verify(asnManager, times(1)).findAsById(1L);
-    verify(asnManager, times(1)).findAsByName("Example Org 1");
+    verify(this.asnManager, times(1)).findAsByNumber(12345L);
+    verify(this.asnManager, times(1)).findAsById(1L);
+    verify(this.asnManager, times(1)).findAsByName("Example Org 1");
   }
 }
