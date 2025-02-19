@@ -28,7 +28,7 @@ public class LogManager {
   }
 
   @Transactional
-  public void log(int level, String message) { // No need for the enum here
+  public void log(int level, String message) {
     logRepository.insert(
         UUID.randomUUID().toString(),
         level,

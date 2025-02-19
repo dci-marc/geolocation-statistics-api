@@ -12,16 +12,16 @@ import java.util.Map;
 
 public final class SerializerResponseFactory {
 
-  private static final ObjectMapper objectMapper = new ObjectMapper();
+  private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
   static {
-    SerializerResponseFactory.objectMapper.findAndRegisterModules();
+    SerializerResponseFactory.OBJECT_MAPPER.findAndRegisterModules();
   }
 
   private SerializerResponseFactory() {}
 
   public static AsnResponse serializeAsnResponse(AsnDataModel model) {
-    return SerializerResponseFactory.objectMapper.convertValue(model, AsnResponse.class);
+    return SerializerResponseFactory.OBJECT_MAPPER.convertValue(model, AsnResponse.class);
   }
 
   public static Map<Long, AsnResponse> serializeAsnResponse(Map<Long, AsnDataModel> mapData) {
@@ -35,7 +35,7 @@ public final class SerializerResponseFactory {
   }
 
   public static LogResponse serializeLogResponse(LogDataModel model) {
-    return SerializerResponseFactory.objectMapper.convertValue(model, LogResponse.class);
+    return SerializerResponseFactory.OBJECT_MAPPER.convertValue(model, LogResponse.class);
   }
 
   public static List<LogResponse> serializeLogResponse(List<LogDataModel> list) {
