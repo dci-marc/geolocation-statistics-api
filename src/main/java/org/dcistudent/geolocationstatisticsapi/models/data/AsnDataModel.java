@@ -1,42 +1,45 @@
 package org.dcistudent.geolocationstatisticsapi.models.data;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AsnDataModel implements Serializable {
-  private Long asNumber;
-  private String asOrg;
-  private List<IpBlockDataModel> ipBlocks = new ArrayList<>();
+  private @NotNull Long asNumber;
+  private @NotNull String asOrg;
+  private @NotNull List<IpBlockDataModel> ipBlocks = new ArrayList<>();
 
-  public AsnDataModel(Long asNumber, String asOrg) {
-    this.setAsNumber(asNumber);
-    this.setAsOrg(asOrg);
+  public AsnDataModel(@NotNull Long asNumber, @NotNull String asOrg) {
+    this
+        .setAsNumber(asNumber)
+        .setAsOrg(asOrg);
   }
 
-  public Long getAsNumber() {
+  public @NotNull Long getAsNumber() {
     return this.asNumber;
   }
 
-  public AsnDataModel setAsNumber(Long asNumber) {
+  public @NotNull AsnDataModel setAsNumber(@NotNull Long asNumber) {
     this.asNumber = asNumber;
     return this;
   }
 
-  public String getAsOrg() {
+  public @NotNull String getAsOrg() {
     return this.asOrg;
   }
 
-  public AsnDataModel setAsOrg(String asOrg) {
+  public @NotNull AsnDataModel setAsOrg(@NotNull String asOrg) {
     this.asOrg = asOrg;
     return this;
   }
 
-  public List<IpBlockDataModel> getIpBlocks() {
+  public @NotNull List<IpBlockDataModel> getIpBlocks() {
     return this.ipBlocks;
   }
 
-  public AsnDataModel setIpBlocks(List<IpBlockDataModel> ipBlocks) {
+  public @NotNull AsnDataModel setIpBlocks(@NotNull List<IpBlockDataModel> ipBlocks) {
     this.ipBlocks = ipBlocks;
     return this;
   }

@@ -6,6 +6,7 @@ import org.dcistudent.geolocationstatisticsapi.models.data.AsnDataModel;
 import org.dcistudent.geolocationstatisticsapi.models.data.LogDataModel;
 import org.dcistudent.geolocationstatisticsapi.models.response.CountryIpBlocksResponse;
 import org.dcistudent.geolocationstatisticsapi.repositories.CityRepository;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,33 +15,33 @@ import java.util.Map;
 @Service
 public class StatisticService {
 
-  private final CityRepository cityRepository;
-  private final AsnManager asnManager;
-  private final LogManager logManager;
+  private final @NotNull CityRepository cityRepository;
+  private final @NotNull AsnManager asnManager;
+  private final @NotNull LogManager logManager;
 
-  public StatisticService(CityRepository cityRepository, AsnManager asnManager, LogManager logManager) {
+  public StatisticService(@NotNull CityRepository cityRepository, @NotNull AsnManager asnManager, @NotNull LogManager logManager) {
     this.cityRepository = cityRepository;
     this.asnManager = asnManager;
     this.logManager = logManager;
   }
 
-  public List<CountryIpBlocksResponse> getIpBlocksPerCountry() {
+  public @NotNull List<CountryIpBlocksResponse> getIpBlocksPerCountry() {
     return this.cityRepository.findIpBlocksPerCountry();
   }
 
-  public Map<Long, AsnDataModel> getAsByNumber(Long number) {
+  public @NotNull Map<Long, AsnDataModel> getAsByNumber(@NotNull Long number) {
     return this.asnManager.findAsByNumber(number);
   }
 
-  public Map<Long, AsnDataModel> getAsById(Long id) {
+  public @NotNull Map<Long, AsnDataModel> getAsById(@NotNull Long id) {
     return this.asnManager.findAsById(id);
   }
 
-  public Map<Long, AsnDataModel> getAsByName(String name) {
+  public @NotNull Map<Long, AsnDataModel> getAsByName(@NotNull String name) {
     return this.asnManager.findAsByName(name);
   }
 
-  public List<LogDataModel> getLogsWithLimit(Integer limit) {
+  public @NotNull List<LogDataModel> getLogsWithLimit(@NotNull Integer limit) {
     return this.logManager.findLogsByLimit(limit);
   }
 }

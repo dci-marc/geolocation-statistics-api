@@ -1,30 +1,33 @@
 package org.dcistudent.geolocationstatisticsapi.models.data;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.Serializable;
 
 public class IpBlockDataModel implements Serializable {
-  private String ipStart;
-  private String ipEnd;
+  private @NotNull String ipStart;
+  private @NotNull String ipEnd;
 
-  public IpBlockDataModel(String ipStart, String ipEnd) {
-    this.ipStart = ipStart;
-    this.ipEnd = ipEnd;
+  public IpBlockDataModel(@NotNull String ipStart, @NotNull String ipEnd) {
+    this
+        .setIpStart(ipStart)
+        .setIpEnd(ipEnd);
   }
 
-  public String getIpStart() {
+  public @NotNull String getIpStart() {
     return this.ipStart;
   }
 
-  public IpBlockDataModel setIpStart(String ipStart) {
+  public @NotNull IpBlockDataModel setIpStart(@NotNull String ipStart) {
     this.ipStart = ipStart;
     return this;
   }
 
-  public String getIpEnd() {
+  public @NotNull String getIpEnd() {
     return this.ipEnd;
   }
 
-  public IpBlockDataModel setIpEnd(String ipEnd) {
+  public @NotNull IpBlockDataModel setIpEnd(@NotNull String ipEnd) {
     this.ipEnd = ipEnd;
     return this;
   }

@@ -1,6 +1,7 @@
 package org.dcistudent.geolocationstatisticsapi.entities;
 
 import jakarta.persistence.*;
+import org.jetbrains.annotations.NotNull;
 
 @Entity
 public class Asn {
@@ -9,64 +10,72 @@ public class Asn {
   private Long id;
 
   @Column(name = "ip_start")
+  @NotNull
   private String ipStart;
+
   @Column(name = "ip_end")
+  @NotNull
   private String ipEnd;
+
   @Column(name = "as_number")
+  @NotNull
   private Long asNumber;
+
   @Column(name = "as_org")
+  @NotNull
   private String asOrg;
 
   public Asn() {}
 
-  public Asn(String ipStart, String ipEnd, Long asNumber, String asOrg) {
-    this.ipStart = ipStart;
-    this.ipEnd = ipEnd;
-    this.asNumber = asNumber;
-    this.asOrg = asOrg;
+  public Asn(@NotNull String ipStart, @NotNull String ipEnd, @NotNull Long asNumber, @NotNull String asOrg) {
+    this
+        .setIpStart(ipStart)
+        .setIpEnd(ipEnd)
+        .setAsNumber(asNumber)
+        .setAsOrg(asOrg);
   }
 
-  public Long getId() {
+  public @NotNull Long getId() {
     return this.id;
   }
 
-  public Asn setId(Long id) {
+  public Asn setId(@NotNull Long id) {
     this.id = id;
     return this;
   }
 
-  public String getIpStart() {
+  public @NotNull String getIpStart() {
     return this.ipStart;
   }
 
-  public Asn setIpStart(String ipStart) {
+  public Asn setIpStart(@NotNull String ipStart) {
     this.ipStart = ipStart;
     return this;
   }
 
-  public String getIpEnd() {
+  public @NotNull String getIpEnd() {
     return this.ipEnd;
   }
 
-  public Asn setIpEnd(String ipEnd) {
+  public Asn setIpEnd(@NotNull String ipEnd) {
     this.ipEnd = ipEnd;
     return this;
   }
 
-  public Long getAsNumber() {
+  public @NotNull Long getAsNumber() {
     return this.asNumber;
   }
 
-  public Asn setAsNumber(Long asNumber) {
+  public Asn setAsNumber(@NotNull Long asNumber) {
     this.asNumber = asNumber;
     return this;
   }
 
-  public String getAsOrg() {
+  public @NotNull String getAsOrg() {
     return this.asOrg;
   }
 
-  public Asn setAsOrg(String asOrg) {
+  public Asn setAsOrg(@NotNull String asOrg) {
     this.asOrg = asOrg;
     return this;
   }

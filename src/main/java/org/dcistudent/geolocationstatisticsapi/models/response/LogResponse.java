@@ -1,5 +1,7 @@
 package org.dcistudent.geolocationstatisticsapi.models.response;
 
+import org.jetbrains.annotations.NotNull;
+
 public class LogResponse {
 
   private Integer level;
@@ -9,32 +11,36 @@ public class LogResponse {
   public LogResponse() {}
 
   public LogResponse(Integer level, String datetime, String message) {
-    this.setLevel(level);
-    this.setDatetime(datetime);
-    this.setMessage(message);
+    this
+        .setLevel(level)
+        .setDatetime(datetime)
+        .setMessage(message);
   }
 
   public Integer getLevel() {
     return this.level;
   }
 
-  public void setLevel(Integer level) {
+  public @NotNull LogResponse setLevel(@NotNull Integer level) {
     this.level = level;
+    return this;
   }
 
-  public String getDatetime() {
+  public @NotNull String getDatetime() {
     return this.datetime;
   }
 
-  public void setDatetime(String datetime) {
+  public @NotNull LogResponse setDatetime(@NotNull String datetime) {
     this.datetime = datetime;
+    return this;
   }
 
-  public String getMessage() {
+  public @NotNull String getMessage() {
     return this.message;
   }
 
-  public void setMessage(String message) {
+  public @NotNull LogResponse setMessage(@NotNull String message) {
     this.message = message;
+    return this;
   }
 }

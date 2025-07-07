@@ -1,35 +1,36 @@
 package org.dcistudent.geolocationstatisticsapi.loggers;
 
 import org.dcistudent.geolocationstatisticsapi.managers.LogManager;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
 @Component
 public class SqliteLogger {
 
-  private final LogManager logManager;
+  private final @NotNull LogManager logManager;
 
-  public SqliteLogger(LogManager logManager) {
+  public SqliteLogger(@NotNull LogManager logManager) {
     this.logManager = logManager;
   }
 
-  public void logDebug(String message) {
+  public void logDebug(@NotNull String message) {
     this.logManager.log(Level.DEBUG.get(), message);
   }
 
-  public void logInfo(String message) {
+  public void logInfo(@NotNull String message) {
     this.logManager.log(Level.INFO.get(), message);
   }
 
-  public void logWarn(String message) {
+  public void logWarn(@NotNull String message) {
     this.logManager.log(Level.WARN.get(), message);
   }
 
-  public void logError(String message) {
+  public void logError(@NotNull String message) {
     this.logManager.log(Level.ERROR.get(), message);
   }
 
 
-  public void logFatal(String message) {
+  public void logFatal(@NotNull String message) {
     this.logManager.log(Level.FATAL.get(), message);
   }
 

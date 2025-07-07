@@ -1,56 +1,68 @@
 package org.dcistudent.geolocationstatisticsapi.entities;
 
 import jakarta.persistence.*;
+import org.jetbrains.annotations.NotNull;
 
 @Entity
 public class Log {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
   private String id;
+
   @Column(name = "level")
+  @NotNull
   private Integer level;
+
   @Column(name = "datetime")
+  @NotNull
   private String datetime;
+
   @Column(name = "message")
+  @NotNull
   private String message;
 
   public Log() {}
 
-  public Log(Integer level, String datetime, String message) {
-    this.setLevel(level);
-    this.setDatetime(datetime);
-    this.setMessage(message);
+  public Log(@NotNull Integer level, @NotNull String datetime, @NotNull String message) {
+    this
+        .setLevel(level)
+        .setDatetime(datetime)
+        .setMessage(message);
   }
 
-  public String getId() {
+  public @NotNull String getId() {
     return this.id;
   }
 
-  public void setId(String id) {
+  public Log setId(@NotNull String id) {
     this.id = id;
+    return this;
   }
 
-  public Integer getLevel() {
+  public @NotNull Integer getLevel() {
     return this.level;
   }
 
-  public void setLevel(Integer level) {
+  public Log setLevel(@NotNull Integer level) {
     this.level = level;
+    return this;
   }
 
-  public String getDatetime() {
+  public @NotNull String getDatetime() {
     return this.datetime;
   }
 
-  public void setDatetime(String datetime) {
+  public Log setDatetime(@NotNull String datetime) {
     this.datetime = datetime;
+    return this;
   }
 
-  public String getMessage() {
+  public @NotNull String getMessage() {
     return this.message;
   }
 
-  public void setMessage(String message) {
+  public Log setMessage(@NotNull String message) {
     this.message = message;
+    return this;
   }
 }

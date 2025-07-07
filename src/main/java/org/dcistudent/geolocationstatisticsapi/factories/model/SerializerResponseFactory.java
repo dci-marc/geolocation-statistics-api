@@ -5,6 +5,7 @@ import org.dcistudent.geolocationstatisticsapi.models.data.AsnDataModel;
 import org.dcistudent.geolocationstatisticsapi.models.data.LogDataModel;
 import org.dcistudent.geolocationstatisticsapi.models.response.AsnResponse;
 import org.dcistudent.geolocationstatisticsapi.models.response.LogResponse;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.Map;
 
 public final class SerializerResponseFactory {
 
-  private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+  private static final @NotNull ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
   static {
     SerializerResponseFactory.OBJECT_MAPPER.findAndRegisterModules();
@@ -20,11 +21,11 @@ public final class SerializerResponseFactory {
 
   private SerializerResponseFactory() {}
 
-  public static AsnResponse serializeAsnResponse(AsnDataModel model) {
+  public static @NotNull AsnResponse serializeAsnResponse(@NotNull AsnDataModel model) {
     return SerializerResponseFactory.OBJECT_MAPPER.convertValue(model, AsnResponse.class);
   }
 
-  public static Map<Long, AsnResponse> serializeAsnResponse(Map<Long, AsnDataModel> mapData) {
+  public static @NotNull Map<Long, AsnResponse> serializeAsnResponse(@NotNull Map<Long, AsnDataModel> mapData) {
     Map<Long, AsnResponse> mapResponse = new HashMap<>();
 
     mapData.forEach(
@@ -34,11 +35,11 @@ public final class SerializerResponseFactory {
     return mapResponse;
   }
 
-  public static LogResponse serializeLogResponse(LogDataModel model) {
+  public static @NotNull LogResponse serializeLogResponse(@NotNull LogDataModel model) {
     return SerializerResponseFactory.OBJECT_MAPPER.convertValue(model, LogResponse.class);
   }
 
-  public static List<LogResponse> serializeLogResponse(List<LogDataModel> list) {
+  public static @NotNull List<LogResponse> serializeLogResponse(@NotNull List<LogDataModel> list) {
     return list.stream().map(SerializerResponseFactory::serializeLogResponse).toList();
   }
 }

@@ -1,45 +1,51 @@
 package org.dcistudent.geolocationstatisticsapi.models.response;
 
+import org.jetbrains.annotations.NotNull;
+
 public class Response {
   int status = 0;
-  String message = "";
-  Object data;
+  @NotNull String message = "";
+  @NotNull Object data = new Object();
 
   public Response() {}
 
-  public Response(Integer status, String message) {
+  public Response(@NotNull Integer status, @NotNull String message) {
     this.status = status;
     this.message = message;
   }
 
-  public Response(int status, String message, Object data) {
-    this.status = status;
-    this.message = message;
-    this.data = data;
+  public Response(int status, @NotNull String message, @NotNull Object data) {
+    this
+        .setStatus(status)
+        .setMessage(message)
+        .setData(data);
   }
 
   public int getStatus() {
     return this.status;
   }
 
-  public void setStatus(int status) {
+  public @NotNull Response setStatus(int status) {
     this.status = status;
+    return this;
   }
 
-  public String getMessage() {
+  public @NotNull String getMessage() {
     return this.message;
   }
 
-  public void setMessage(String message) {
+  public @NotNull Response setMessage(@NotNull String message) {
     this.message = message;
+    return this;
   }
 
-  public Object getData() {
+  public @NotNull Object getData() {
     return this.data;
   }
 
-  public void setData(Object data) {
+  public @NotNull Response setData(@NotNull Object data) {
     this.data = data;
+    return this;
   }
 
   public enum Status {

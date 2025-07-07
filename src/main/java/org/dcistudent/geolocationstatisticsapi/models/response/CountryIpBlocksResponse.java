@@ -1,4 +1,6 @@
 package org.dcistudent.geolocationstatisticsapi.models.response;
 
-public record CountryIpBlocksResponse(String country, Long count) {
+import org.jetbrains.annotations.NotNull;
+
+public record CountryIpBlocksResponse(@NotNull String country, @NotNull Long count) {
 }

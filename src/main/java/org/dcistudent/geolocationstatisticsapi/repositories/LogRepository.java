@@ -1,6 +1,7 @@
 package org.dcistudent.geolocationstatisticsapi.repositories;
 
 import org.dcistudent.geolocationstatisticsapi.entities.Log;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -11,8 +12,7 @@ import java.util.Optional;
 
 public interface LogRepository extends JpaRepository<Log, Long> {
 
-  default List<Log> findWithLimit(Integer limit) {
-    limit = Optional.ofNullable(limit).orElse(10);
+  default List<Log> findWithLimit(@NotNull Integer limit) {
     if (limit < 1 || limit > 100) {
       throw new IllegalArgumentException("Limit must be between 1 and 100");
     }
@@ -25,7 +25,7 @@ public interface LogRepository extends JpaRepository<Log, Long> {
       "ORDER BY datetime DESC " +
       "LIMIT :limit"
   )
-  List<Log> findWithLimitStatement(@Param("limit") Integer limit);
+  List<Log> findWithLimitStatement(@NotNull @Param("limit") Integer limit);
 
   @Modifying
   @Query(
@@ -33,9 +33,9 @@ public interface LogRepository extends JpaRepository<Log, Long> {
       "VALUES (:id, :level, :datetime, :message)"
   )
   void insert(
-      @Param("id") String uuid,
-      @Param("level") Integer level,
-      @Param("datetime") String datetime,
-      @Param("message") String message
+      @NotNull @Param("id") String uuid,
+      @NotNull @Param("level") Integer level,
+      @NotNull @Param("datetime") String datetime,
+      @NotNull @Param("message") String message
   );
 }

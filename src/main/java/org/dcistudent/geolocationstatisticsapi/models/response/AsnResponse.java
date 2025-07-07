@@ -1,43 +1,49 @@
 package org.dcistudent.geolocationstatisticsapi.models.response;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class AsnResponse {
 
-  private Long asNumber;
-  private String asOrg;
-  private List<IpBlockResponse> ipBlocks = new ArrayList<>();
+  private @NotNull Long asNumber;
+  private @NotNull String asOrg;
+  private @NotNull List<IpBlockResponse> ipBlocks = new ArrayList<>();
 
   public AsnResponse() {}
 
-  public AsnResponse(Long asNumber, String asOrg, List<IpBlockResponse> ipBlocks) {
-    this.setAsNumber(asNumber);
-    this.setAsOrg(asOrg);
-    this.setIpBlocks(ipBlocks);
+  public AsnResponse(@NotNull Long asNumber, @NotNull String asOrg, @NotNull List<IpBlockResponse> ipBlocks) {
+    this
+        .setAsNumber(asNumber)
+        .setAsOrg(asOrg)
+        .setIpBlocks(ipBlocks);
   }
 
-  public Long getAsNumber() {
+  public @NotNull Long getAsNumber() {
     return this.asNumber;
   }
 
-  public void setAsNumber(Long asNumber) {
+  public @NotNull AsnResponse setAsNumber(@NotNull Long asNumber) {
     this.asNumber = asNumber;
+    return this;
   }
 
-  public String getAsOrg() {
+  public @NotNull String getAsOrg() {
     return this.asOrg;
   }
 
-  public void setAsOrg(String asOrg) {
+  public @NotNull AsnResponse setAsOrg(@NotNull String asOrg) {
     this.asOrg = asOrg;
+    return this;
   }
 
-  public List<IpBlockResponse> getIpBlocks() {
+  public @NotNull List<IpBlockResponse> getIpBlocks() {
     return this.ipBlocks;
   }
 
-  public void setIpBlocks(List<IpBlockResponse> ipBlocks) {
+  public @NotNull AsnResponse setIpBlocks(@NotNull List<IpBlockResponse> ipBlocks) {
     this.ipBlocks = ipBlocks;
+    return this;
   }
 }

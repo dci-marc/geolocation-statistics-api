@@ -3,6 +3,7 @@ package org.dcistudent.geolocationstatisticsapi.resolvers;
 import org.dcistudent.geolocationstatisticsapi.models.response.CountryIpBlocksResponse;
 import org.dcistudent.geolocationstatisticsapi.models.response.Response;
 import org.dcistudent.geolocationstatisticsapi.services.StatisticService;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
@@ -12,19 +13,19 @@ import java.util.List;
 @Controller
 public class StatisticResolver {
 
-  final StatisticService statisticService;
+  final @NotNull StatisticService statisticService;
 
-  public StatisticResolver(StatisticService statisticService) {
+  public StatisticResolver(@NotNull StatisticService statisticService) {
     this.statisticService = statisticService;
   }
 
   @QueryMapping
-  public List<CountryIpBlocksResponse> getIpBlocksPerCountry() {
+  public @NotNull List<CountryIpBlocksResponse> getIpBlocksPerCountry() {
     return this.statisticService.getIpBlocksPerCountry();
   }
 
   @QueryMapping
-  public Response getAsByNumber(@Argument Long number) {
+  public @NotNull Response getAsByNumber(@NotNull @Argument Long number) {
     try {
       return new Response(Response.Status.OK.get(), Response.Message.OK.get(), this.statisticService.getAsByNumber(number));
     } catch (Exception e) {
@@ -33,7 +34,7 @@ public class StatisticResolver {
   }
 
   @QueryMapping
-  public Response getAsById(@Argument Long id) {
+  public @NotNull Response getAsById(@NotNull @Argument Long id) {
     try {
       return new Response(Response.Status.OK.get(), Response.Message.OK.get(), this.statisticService.getAsById(id));
     } catch (Exception e) {
@@ -42,7 +43,7 @@ public class StatisticResolver {
   }
 
   @QueryMapping
-  public Response getAsByName(@Argument String name) {
+  public @NotNull Response getAsByName(@NotNull @Argument String name) {
     try {
       return new Response(Response.Status.OK.get(), Response.Message.OK.get(), this.statisticService.getAsByName(name));
     } catch (Exception e) {

@@ -1,55 +1,66 @@
 package org.dcistudent.geolocationstatisticsapi.models.data;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.jetbrains.annotations.NotNull;
 
 import java.time.ZonedDateTime;
 
 public class LogDataModel {
 
   @JsonIgnore
-  private String id;
-  private Integer level;
-  private ZonedDateTime datetime;
-  private String message;
+  private @NotNull String id;
+  private @NotNull Integer level;
+  private @NotNull ZonedDateTime datetime;
+  private @NotNull String message;
 
   public LogDataModel() {}
 
-  public LogDataModel(String id, Integer level, ZonedDateTime datetime, String message) {
-    this.setId(id);
-    this.setLevel(level);
-    this.setDatetime(datetime);
-    this.setMessage(message);
+  public LogDataModel(
+      @NotNull String id,
+      @NotNull Integer level,
+      @NotNull ZonedDateTime datetime,
+      @NotNull String message
+  ) {
+    this
+        .setId(id)
+        .setLevel(level)
+        .setDatetime(datetime)
+        .setMessage(message);
   }
 
-  public String getId() {
+  public @NotNull String getId() {
     return this.id;
   }
 
-  public void setId(String id) {
+  public @NotNull LogDataModel setId(@NotNull String id) {
     this.id = id;
+    return this;
   }
 
-  public Integer getLevel() {
+  public @NotNull Integer getLevel() {
     return this.level;
   }
 
-  public void setLevel(Integer level) {
+  public @NotNull LogDataModel setLevel(@NotNull Integer level) {
     this.level = level;
+    return this;
   }
 
-  public ZonedDateTime getDatetime() {
+  public @NotNull ZonedDateTime getDatetime() {
     return this.datetime;
   }
 
-  public void setDatetime(ZonedDateTime datetime) {
+  public @NotNull LogDataModel setDatetime(@NotNull ZonedDateTime datetime) {
     this.datetime = datetime;
+    return this;
   }
 
-  public String getMessage() {
+  public @NotNull String getMessage() {
     return this.message;
   }
 
-  public void setMessage(String message) {
+  public @NotNull LogDataModel setMessage(@NotNull String message) {
     this.message = message;
+    return this;
   }
 }

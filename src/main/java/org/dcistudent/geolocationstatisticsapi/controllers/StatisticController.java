@@ -7,6 +7,7 @@ import org.dcistudent.geolocationstatisticsapi.models.response.CountryIpBlocksRe
 import org.dcistudent.geolocationstatisticsapi.models.response.LogResponse;
 import org.dcistudent.geolocationstatisticsapi.models.response.Response;
 import org.dcistudent.geolocationstatisticsapi.services.StatisticService;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,21 +21,21 @@ import java.util.Map;
 @RequestMapping("/api")
 public class StatisticController {
 
-  final StatisticService statisticService;
-  final SqliteLogger sqliteLogger;
+  private final @NotNull StatisticService statisticService;
+  private final @NotNull SqliteLogger sqliteLogger;
 
-  public StatisticController(StatisticService statisticService, SqliteLogger sqliteLogger) {
+  public StatisticController(@NotNull StatisticService statisticService, @NotNull SqliteLogger sqliteLogger) {
     this.statisticService = statisticService;
     this.sqliteLogger = sqliteLogger;
   }
 
   @GetMapping("/ip-blocks-per-country")
-  public List<CountryIpBlocksResponse> getIpBlocksPerCountry() {
+  public @NotNull List<CountryIpBlocksResponse> getIpBlocksPerCountry() {
     return this.statisticService.getIpBlocksPerCountry();
   }
 
   @GetMapping("/as/by-number/{number}")
-  public Response getAsByNumber(@PathVariable Long number) {
+  public @NotNull Response getAsByNumber(@NotNull @PathVariable Long number) {
     try {
       Map<Long, AsnResponse> response = SerializerResponseFactory
           .serializeAsnResponse(this.statisticService.getAsByNumber(number));
@@ -47,8 +48,7 @@ public class StatisticController {
           )
       );
 
-      return new Response(Response.Status.OK.get(), Response.Message.OK.get(), response
-      );
+      return new Response(Response.Status.OK.get(), Response.Message.OK.get(), response);
     } catch (Exception e) {
       this.sqliteLogger.logFatal(Arrays.toString(e.getStackTrace()));
       return new Response(Response.Status.INTERNAL_SERVER_ERROR.get(), Response.Message.INTERNAL_SERVER_ERROR.get());
@@ -56,7 +56,7 @@ public class StatisticController {
   }
 
   @GetMapping("/as/by-id/{id}")
-  public Response getAsById(@PathVariable Long id) {
+  public @NotNull Response getAsById(@NotNull @PathVariable Long id) {
     try {
       Map<Long, AsnResponse> response = SerializerResponseFactory
           .serializeAsnResponse(this.statisticService.getAsById(id));
@@ -77,7 +77,7 @@ public class StatisticController {
   }
 
   @GetMapping("/as/by-name/{name}")
-  public Response getAsByName(@PathVariable String name) {
+  public @NotNull Response getAsByName(@NotNull @PathVariable String name) {
     try {
       Map<Long, AsnResponse> response = SerializerResponseFactory
           .serializeAsnResponse(this.statisticService.getAsByName(name));
@@ -97,8 +97,8 @@ public class StatisticController {
     }
   }
 
-  @GetMapping("/logs/{limit}")
-  public Response getLogs(@PathVariable Integer limit) {
+  @NotNull @GetMapping("/logs/{limit}")
+  public Response getLogs(@NotNull @PathVariable Integer limit) {
     try {
       List<LogResponse> response = SerializerResponseFactory
           .serializeLogResponse(this.statisticService.getLogsWithLimit(limit));

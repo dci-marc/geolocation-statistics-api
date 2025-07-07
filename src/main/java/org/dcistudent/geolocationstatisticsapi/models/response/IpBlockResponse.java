@@ -1,29 +1,34 @@
 package org.dcistudent.geolocationstatisticsapi.models.response;
 
+import org.jetbrains.annotations.NotNull;
+
 public class IpBlockResponse {
-  private String ipStart;
-  private String ipEnd;
+  private @NotNull String ipStart;
+  private @NotNull String ipEnd;
 
   public IpBlockResponse() {}
 
-  public IpBlockResponse(String ipStart, String ipEnd) {
-    this.setIpStart(ipStart);
-    this.setIpEnd(ipEnd);
+  public IpBlockResponse(@NotNull String ipStart, @NotNull String ipEnd) {
+    this
+        .setIpStart(ipStart)
+        .setIpEnd(ipEnd);
   }
 
-  public String getIpStart() {
+  public @NotNull String getIpStart() {
     return this.ipStart;
   }
 
-  public void setIpStart(String ipStart) {
+  public @NotNull IpBlockResponse setIpStart(@NotNull String ipStart) {
     this.ipStart = ipStart;
+    return this;
   }
 
-  public String getIpEnd() {
+  public @NotNull String getIpEnd() {
     return this.ipEnd;
   }
 
-  public void setIpEnd(String ipEnd) {
+  public @NotNull IpBlockResponse setIpEnd(@NotNull String ipEnd) {
     this.ipEnd = ipEnd;
+    return this;
   }
 }
